@@ -302,7 +302,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Current Listings</h2>
-      <p>A snapshot of properties currently on Pormat's books. Once Muma's own property list and photos are confirmed, these will be swapped for that portfolio.</p>
+      <p>The Muma buildings identified for student accommodation conversion, plus additional candidate properties Dolly has sourced from the open market.</p>
     </div>
     <div class="listings-grid" id="listingsGrid"></div>
   </div>
@@ -430,59 +430,131 @@
 /* ---------------- Property data (placeholders — replace with real content) ---------------- */
 const properties = [
   {
-    id: "mooikloof-ridge",
-    name: "2-Bedroom Apartment — Mooikloof Ridge Estate",
-    location: "Mooikloof Ridge, Pretoria",
+    id: "absa-united",
+    name: "ABSA United",
+    location: "64 Maitland Street, Bloemfontein, Free State",
     status: "available",
-    price: "R 9,950 pm",
-    beds: "2", size: "On request", type: "Residential — To Let",
-    desc: "A clean, well-presented corner unit in the sought-after Mooikloof Ridge Estate. Available from 1 April 2026.",
-    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2026/3/513_79a68e14ee344928b6589a2814ed38c2_t_w_320_h_240.avif",
-    sourceUrl: "https://www.pormat.co.za/results/residential/to-let/pretoria/mooikloof-ridge/apartment/3114182/"
+    price: "R 45,045,000",
+    beds: "—", size: "77 units (potential)", type: "Commercial — Student Accommodation Conversion",
+    desc: "A commercial building in Bloemfontein identified for potential conversion into student accommodation, with capacity for roughly 77 units and around 383 students. Approximately 3.4 km from the University of the Free State.",
+    image: "assets/images/absa-united.jpg"
   },
   {
-    id: "garsfontein-duplex",
-    name: "3 Bedroom Duplex — Garsfontein",
-    location: "Garsfontein, Pretoria East",
+    id: "best-med",
+    name: "Best Med",
+    location: "36 Hamilton Street, Arcadia, Gauteng",
     status: "available",
-    price: "R 1,500,000",
-    beds: "3", size: "On request", type: "Residential — For Sale",
-    desc: "A duplex for sale in a quiet, secure residential complex in Garsfontein, Pretoria East.",
-    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_1838ae9d6e7241d39f3cb89af3857ce4_t_w_320_h_240.avif",
-    sourceUrl: "https://www.pormat.co.za/results/residential/for-sale/pretoria/garsfontein/duplex/2335034/"
+    price: "R 25,490,000",
+    beds: "—", size: "46 units (potential)", type: "Commercial — Student Accommodation Conversion",
+    desc: "A building in Arcadia earmarked for conversion, with capacity for around 46 units and 230 students. Roughly 4.3 km from the University of Pretoria's Hatfield campus.",
+    image: "assets/images/best-med.jpg"
   },
   {
-    id: "savannah-country-estate",
-    name: "2 Bedroom Apartment — Savannah Country Estate",
-    location: "Savannah Country Estate, Pretoria East",
+    id: "commission-house",
+    name: "Commission House",
+    location: "566 Ziervogel Street, Pretoria, Gauteng",
     status: "available",
-    price: "R 8,800 pm",
-    beds: "2", size: "On request", type: "Residential — To Let",
-    desc: "A modern, immaculately kept apartment for rent at Green Creek Lifestyle Estate in Pretoria East.",
-    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_f2774fbfe4b447b3a6cc4b0c5e99f4a9_t_w_320_h_240.avif",
-    sourceUrl: "https://www.pormat.co.za/results/residential/to-let/pretoria/savannah-country-estate/apartment/2335098/"
+    price: "R 54,560,000",
+    beds: "—", size: "75 units (potential)", type: "Commercial — Student Accommodation Conversion",
+    desc: "A Pretoria building identified for conversion, with capacity for roughly 75 units and 376 students. About 1.2 km from Tshwane University of Technology's Arcadia campus.",
+    image: "assets/images/commission-house.jpg"
   },
   {
-    id: "hazeldean-house",
-    name: "4 Bedroom House — Hazeldean",
-    location: "Hazeldean, Silverlakes Area, Pretoria",
+    id: "hatfield-forum-east",
+    name: "Hatfield Forum East",
+    location: "1077 Arcadia Street, Hatfield, Pretoria, Gauteng",
     status: "available",
-    price: "R 1,935,000",
-    beds: "4", size: "On request", type: "Residential — For Sale",
-    desc: "A modern double-storey home in the Hazeldean/Silverlakes area, with lounge, dining room, kitchen, and double garage.",
-    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_1cc9eefeaf9e48e6a0cf8710f6c15d72_t_w_320_h_240.avif",
-    sourceUrl: "https://www.pormat.co.za/results/residential/for-sale/pretoria/hazeldean/house/2335117/"
+    price: "R 44,600,000",
+    beds: "—", size: "80 units (potential)", type: "Commercial — Student Accommodation Conversion",
+    desc: "A Hatfield building with capacity for around 80 units and 399 students, just 0.6 km from the University of Pretoria's main Hatfield campus.",
+    image: "assets/images/hatfield-forum-east.jpg"
   },
   {
-    id: "six-fountains-duet",
-    name: "4 Bedroom Duet — Six Fountains Residential Estate",
-    location: "Six Fountains Estate, Pretoria East",
+    id: "sa-eagle",
+    name: "SA Eagle",
+    location: "136 Maitland Street, Bloemfontein",
     status: "available",
-    price: "R 3,995,000",
-    beds: "4", size: "On request", type: "Residential — For Sale",
-    desc: "A brand-new double-storey home in the Six Fountains Estate, Pretoria East. Bond registration and transfer costs are included in the sale price.",
-    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_b5ef1338b5dc4373a7f9ba20e13b1f0f_t_w_320_h_240.avif",
-    sourceUrl: "https://www.pormat.co.za/results/residential/for-sale/pretoria/six-fountains-residential-estate/duet/2335101/"
+    price: "R 20,653,500",
+    beds: "—", size: "46 units (potential)", type: "Commercial — Student Accommodation Conversion",
+    desc: "A Bloemfontein building with capacity for roughly 46 units and 231 students. Approximately 4.1 km from the University of the Free State.",
+    image: "assets/images/sa-eagle.jpg"
+  },
+  {
+    id: "sunnyside-jorissen",
+    name: "Sunnyside Residential Building",
+    location: "2701 Jorissen Street, Sunnyside, Pretoria",
+    status: "available",
+    price: "R 40,000,000",
+    beds: "63 units", size: "4,490 m²", type: "Commercial — Residential/Student Conversion",
+    desc: "A recently renovated A-grade residential block in Sunnyside with 63 apartments (bachelors, 1.5- and 2-bedroom units), on-site caretaker, and backup water storage. Could accommodate up to 266 student beds if subdivided.",
+    image: "https://images.prop24.com/330666515/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-sunnyside-114246627"
+  },
+  {
+    id: "arcadia-zeederberg",
+    name: "NXTGEN Student Accommodation",
+    location: "173 Zeederberg Road, Arcadia, Pretoria",
+    status: "available",
+    price: "R 60,000,000",
+    beds: "32 units", size: "3,300 m²", type: "Commercial — Already Converted Student Accommodation",
+    desc: "A fully converted and furnished student accommodation building opposite the Union Buildings, accredited for 198 beds. Roughly 3.5 km from TUT's main campus and under 1 km from TUT/TVET Arcadia.",
+    image: "https://images.prop24.com/381960365/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-arcadia-110891363"
+  },
+  {
+    id: "rietfontein-mikado",
+    name: "Rietfontein Twin Building — Mikado North",
+    location: "505 18th Avenue, Rietfontein, Pretoria",
+    status: "available",
+    price: "R 57,000,000",
+    beds: "102 units", size: "7,200 m²", type: "Commercial — Residential/Student Conversion",
+    desc: "One of a pair of A-grade twin buildings in Rietfontein, currently tenanted with low vacancy. Potential for up to 372 student beds. Sold together with the neighbouring building (combined price R83,000,000).",
+    image: "https://images.prop24.com/381625599/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-rietfontein-116481253"
+  },
+  {
+    id: "rietfontein-palma",
+    name: "Rietfontein Twin Building — Palma",
+    location: "525 18th Avenue, Rietfontein, Pretoria",
+    status: "available",
+    price: "R 26,000,000",
+    beds: "40 units", size: "3,344 m²", type: "Commercial — Residential/Student Conversion",
+    desc: "The second of the Rietfontein twin buildings, next to a park, with individual electricity meters per unit. Potential for up to 170 student beds. Sold together with the neighbouring building (combined price R83,000,000).",
+    image: "https://images.prop24.com/365907795/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-rietfontein-116481273"
+  },
+  {
+    id: "gezina-lanork",
+    name: "Gezina Residential Building — Lanork",
+    location: "541 Adcock Street, Gezina, Pretoria",
+    status: "available",
+    price: "R 43,000,000",
+    beds: "65 units", size: "5,350 m²", type: "Commercial — Residential/Student Conversion",
+    desc: "An A-grade Gezina building with rooftop space leased to a cell tower provider, low vacancy, and potential for up to 286 student beds. About 1 km from UP Prinshof.",
+    image: "https://images.prop24.com/381626394/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-gezina-116480565"
+  },
+  {
+    id: "gezina-ontario",
+    name: "Gezina Residential Building — Ontario",
+    location: "579 Adcock Street, Gezina, Pretoria",
+    status: "available",
+    price: "R 30,000,000",
+    beds: "48 units", size: "3,600 m²", type: "Commercial — Residential/Student Conversion",
+    desc: "A Gezina building close to UP Prinshof and Steve Biko Academic Hospital, with potential for up to 204 student beds. Sold together with a neighbouring Gezina building (combined price R83,000,000).",
+    image: "https://images.prop24.com/365897064/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-gezina-116480667"
+  },
+  {
+    id: "gezina-manitoba",
+    name: "Gezina Residential Building — Manitoba",
+    location: "288 Eleventh Avenue, Gezina, Pretoria",
+    status: "available",
+    price: "R 53,000,000",
+    beds: "84 units", size: "6,780 m²", type: "Commercial — Residential/Student Conversion",
+    desc: "A well-maintained Gezina building within walking distance of UP Prinshof, with potential for up to 372 student beds. Sold together with a neighbouring Gezina building (combined price R83,000,000).",
+    image: "https://images.prop24.com/381625747/Crop676x507",
+    sourceUrl: "https://www.bluesquareproperties.co.za/commercial-property-for-sale-in-gezina-116480708"
   }
 ];
 
