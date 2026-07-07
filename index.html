@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pormat Property Hub — Unlock Your Next Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:        #8C2F26;
+    --red-deep:   #6E241D;
+    --charcoal:   #4A3D35;
+    --black:      #16130F;
+    --paper:      #FAF7F2;
+    --paper-dim:  #F0EAE1;
+    --grey:       #7A7168;
+    --line:       #E4DCCF;
+    --white:      #FFFFFF;
+    --radius:     2px;
+    --maxw:       1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--black);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.01em;
+    color:var(--black);
+  }
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{height:42px;width:auto;flex-shrink:0;}
+  .brand-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:0.02em;line-height:1;}
+  .brand-text span{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:0.55rem;letter-spacing:0.24em;color:var(--charcoal);margin-top:3px;}
+  .nav-links{display:flex;gap:34px;font-size:0.86rem;font-weight:600;}
+  .nav-links a{color:var(--charcoal);transition:color .15s;}
+  .nav-links a:hover{color:var(--red);}
+  .nav-cta{
+    background:var(--black);color:var(--white);padding:10px 20px;
+    font-size:0.82rem;font-weight:600;border-radius:var(--radius);
+    transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--red);}
+  .nav-toggle{display:none;}
+  @media(max-width:820px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;font-size:1.4rem;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:120px 0 100px;
+    background:var(--black);
+    color:var(--paper);
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-skyline{
+    position:absolute;bottom:0;left:0;right:0;height:280px;
+    opacity:0.9;z-index:1;pointer-events:none;
+  }
+  .hero-eyebrow{color:#D98B7F;}
+  .hero h1{
+    font-size:clamp(2.6rem,6vw,4.6rem);
+    font-weight:700;line-height:1.03;margin:18px 0 24px;
+    max-width:820px;
+    text-transform:uppercase;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--red);
+    display:inline-block;
+  }
+  .hero p{
+    max-width:480px;color:#CFC7BC;font-size:1.05rem;margin-bottom:38px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:14px 28px;font-weight:600;font-size:0.9rem;
+    border-radius:var(--radius);transition:all .15s;
+  }
+  .btn-primary{background:var(--red);color:var(--white);}
+  .btn-primary:hover{background:var(--red-deep);}
+  .btn-ghost{border:1px solid rgba(250,247,242,0.35);color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--paper);background:rgba(250,247,242,0.08);}
+  .btn-dark{border:1px solid var(--black);color:var(--black);}
+  .btn-dark:hover{background:var(--black);color:var(--white);}
+
+  /* ---------- Section shell ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;margin-bottom:52px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:28px;
+  }
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.5rem);text-transform:uppercase;}
+  .section-head p{max-width:420px;color:var(--grey);font-size:0.95rem;}
+
+  /* ---------- Listings ---------- */
+  .listings-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  @media(max-width:980px){.listings-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.listings-grid{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--white);border:1px solid var(--line);
+    display:flex;flex-direction:column;
+    transition:transform .18s, box-shadow .18s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -20px rgba(22,19,15,0.35);}
+  .card-media{
+    position:relative;height:180px;background:var(--paper-dim);
+    overflow:hidden;
+  }
+  .card-media img{width:100%;height:100%;object-fit:cover;}
+  .card-tag{
+    position:absolute;top:12px;left:12px;z-index:2;
+    font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    padding:5px 10px;border-radius:var(--radius);
+  }
+  .tag-available{background:var(--black);color:var(--paper);}
+  .tag-reserved{background:var(--charcoal);color:var(--paper);}
+  .tag-soon{background:var(--red);color:var(--white);}
+  .placeholder-note{
+    position:absolute;bottom:8px;right:10px;font-size:0.62rem;color:var(--grey);
+    font-weight:600;letter-spacing:0.04em;z-index:2;
+  }
+  .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+  .card-loc{font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+  .card-title{font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+  .card-specs{display:flex;gap:14px;font-size:0.8rem;color:var(--charcoal);margin-bottom:16px;flex-wrap:wrap;}
+  .card-specs span{display:flex;align-items:center;gap:5px;}
+  .card-price{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:18px;}
+  .card-price small{display:block;font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:600;color:var(--grey);text-transform:uppercase;letter-spacing:0.1em;}
+  .card-btn{
+    margin-top:auto;border:1px solid var(--black);text-align:center;padding:11px;
+    font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+    transition:all .15s;
+  }
+  .card-btn:hover{background:var(--black);color:var(--white);}
+
+  /* ---------- About ---------- */
+  .about{background:var(--paper-dim);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;}}
+  .about-copy p{color:var(--charcoal);margin-bottom:18px;font-size:1rem;max-width:480px;}
+  .about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:32px;}
+  .stat-num{font-family:'Space Grotesk',sans-serif;font-size:2.1rem;font-weight:700;color:var(--red);}
+  .stat-label{font-size:0.76rem;color:var(--grey);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:4px;}
+  .about-visual{height:340px;background:var(--black);position:relative;overflow:hidden;}
+
+  /* ---------- Enquiry ---------- */
+  .enquiry{background:var(--black);color:var(--paper);}
+  .enquiry .section-head{border-color:rgba(250,247,242,0.15);}
+  .enquiry .section-head p{color:#A79C90;}
+  .form-shell{
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;
+  }
+  @media(max-width:820px){.form-shell{grid-template-columns:1fr;}}
+  .form-note{color:#B7ACA0;font-size:0.92rem;max-width:380px;}
+  .form-note .contact-line{
+    display:flex;align-items:center;gap:10px;margin-top:24px;font-weight:600;color:var(--paper);
+  }
+  .form-note .contact-line span.dot{width:6px;height:6px;background:var(--red);border-radius:50%;flex-shrink:0;}
+  form{display:flex;flex-direction:column;gap:16px;}
+  .field label{display:block;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#A79C90;margin-bottom:8px;}
+  .field input,.field select,.field textarea{
+    width:100%;background:rgba(250,247,242,0.06);border:1px solid rgba(250,247,242,0.2);
+    color:var(--paper);padding:12px 14px;font-family:'Inter',sans-serif;font-size:0.92rem;
+    border-radius:var(--radius);
+  }
+  .field select option{color:var(--black);}
+  .field input::placeholder,.field textarea::placeholder{color:#7D7266;}
+  .field textarea{resize:vertical;min-height:90px;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--red);outline-offset:1px;}
+  .form-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+  .form-actions .btn{flex:1;text-align:center;min-width:180px;}
+  .form-status{font-size:0.82rem;color:#C7BCAF;min-height:1.2em;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:44px 0;border-top:1px solid var(--line);}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;}
+  .footer-brand svg{width:22px;height:22px;}
+  footer .footer-links{display:flex;gap:26px;font-size:0.82rem;color:var(--grey);font-weight:600;}
+  footer .footer-fine{font-size:0.76rem;color:var(--grey);margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  footer .footer-credit a{color:var(--red);font-weight:600;transition:color .15s;}
+  footer .footer-credit a:hover{color:var(--red-deep);text-decoration:underline;}
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(22,19,15,0.72);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--paper);max-width:760px;width:100%;max-height:88vh;overflow-y:auto;
+    border-radius:var(--radius);
+  }
+  .modal-media{height:220px;background:var(--paper-dim);position:relative;overflow:hidden;}
+  .modal-media img{width:100%;height:100%;object-fit:cover;}
+  .modal-close{
+    position:absolute;top:14px;right:14px;width:34px;height:34px;background:var(--black);
+    color:var(--paper);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;z-index:3;
+  }
+  .modal-body{padding:32px;}
+  .modal-loc{font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+  .modal-title{font-size:1.7rem;font-weight:700;margin-bottom:16px;}
+  .modal-price{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:24px;}
+  .modal-specs{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+    background:var(--white);border:1px solid var(--line);padding:20px;margin-bottom:24px;
+  }
+  .spec-item .spec-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey);font-weight:700;margin-bottom:4px;}
+  .spec-item .spec-value{font-weight:700;}
+  .modal-desc{color:var(--charcoal);margin-bottom:26px;}
+  .modal-actions{display:flex;gap:14px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img class="brand-mark" src="assets/images/logo1.png" alt="Pormat Property Group">
+    </div>
+    <nav class="nav-links">
+      <a href="#listings">Listings</a>
+      <a href="#about">About</a>
+      <a href="#contact">Enquire</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Enquire Now</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <svg class="hero-skyline" viewBox="0 0 1200 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="150" width="90" height="130" fill="#241E17"/>
+    <rect x="100" y="90" width="70" height="190" fill="#3A2E27"/>
+    <rect x="180" y="170" width="60" height="110" fill="#241E17"/>
+    <rect x="250" y="60" width="80" height="220" fill="#6E241D"/>
+    <rect x="340" y="130" width="55" height="150" fill="#3A2E27"/>
+    <rect x="405" y="100" width="65" height="180" fill="#241E17"/>
+    <rect x="480" y="180" width="90" height="100" fill="#3A2E27"/>
+    <rect x="580" y="40" width="75" height="240" fill="#8C2F26"/>
+    <rect x="665" y="140" width="60" height="140" fill="#241E17"/>
+    <rect x="735" y="95" width="70" height="185" fill="#3A2E27"/>
+    <rect x="815" y="170" width="55" height="110" fill="#241E17"/>
+    <rect x="880" y="70" width="85" height="210" fill="#6E241D"/>
+    <rect x="975" y="150" width="60" height="130" fill="#3A2E27"/>
+    <rect x="1045" y="110" width="70" height="170" fill="#241E17"/>
+    <rect x="1125" y="175" width="75" height="105" fill="#3A2E27"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow hero-eyebrow">Pormat Property Group</div>
+    <h1>Unlock Your <em>Next Investment</em></h1>
+    <p>A private view of Pormat's current property portfolio — browse available listings, review the details, and send us an enquiry in a couple of taps.</p>
+    <div class="hero-actions">
+      <a href="#listings" class="btn btn-primary">View Listings</a>
+      <a href="#contact" class="btn btn-ghost">Make an Enquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LISTINGS ================= -->
+<section id="listings">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Current Listings</h2>
+      <p>A snapshot of properties currently on Pormat's books. Once Muma's own property list and photos are confirmed, these will be swapped for that portfolio.</p>
+    </div>
+    <div class="listings-grid" id="listingsGrid"></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <div class="eyebrow">About Pormat</div>
+      <h2 style="margin:14px 0 20px;font-size:2rem;text-transform:uppercase;">Making Your Real Estate Dreams Real</h2>
+      <p>Pormat Property Group traces back to 2015, when its founders launched their first development — a block of flats in Pretoria North — and ended up marketing and letting the units themselves after struggling to find an agency that could. That hands-on experience uncovered a gap in the market and grew into what Pormat is today.</p>
+      <p>The company is built around helping property owners market and manage their own projects, backed by a team with two decades of combined real estate experience and full PPRA registration. This portal gives our clients direct, up-to-date access to what's currently available, without the back-and-forth of PDFs and email threads.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">2015</div>
+          <div class="stat-label">Founded</div>
+        </div>
+        <div>
+          <div class="stat-num">PPRA</div>
+          <div class="stat-label">Registered Practitioners</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <rect x="30" y="170" width="55" height="170" fill="#3A2E27"/>
+        <rect x="95" y="90" width="45" height="250" fill="#8C2F26"/>
+        <rect x="150" y="200" width="50" height="140" fill="#241E17"/>
+        <rect x="210" y="60" width="60" height="280" fill="#6E241D"/>
+        <rect x="280" y="150" width="45" height="190" fill="#3A2E27"/>
+        <rect x="335" y="110" width="40" height="230" fill="#241E17"/>
+        <circle cx="345" cy="60" r="6" fill="#8C2F26"/>
+        <circle cx="345" cy="80" r="6" fill="#F0EAE1"/>
+        <circle cx="345" cy="100" r="6" fill="#16130F"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENQUIRY ================= -->
+<section class="enquiry" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Make An Enquiry</h2>
+      <p>Fill in your details and send your enquiry straight to us — by WhatsApp, email, or both.</p>
+    </div>
+    <div class="form-shell">
+      <div class="form-note">
+        <p>Choose whichever channel suits you best. WhatsApp opens with your message pre-filled and ready to send; email opens your mail app with everything drafted for you.</p>
+        <div class="contact-line"><span class="dot"></span> Dolly@pormat.co.za</div>
+        <div class="contact-line"><span class="dot"></span> 066 090 1485 (WhatsApp)</div>
+      </div>
+      <form id="enquiryForm">
+        <div class="field">
+          <label for="f-name">Full Name</label>
+          <input type="text" id="f-name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone Number</label>
+          <input type="tel" id="f-phone" placeholder="e.g. 082 000 0000" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email Address</label>
+          <input type="email" id="f-email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="f-property">Property Of Interest</label>
+          <select id="f-property"></select>
+        </div>
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" placeholder="Tell us a bit about what you're looking for..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="sendWhatsapp">Send via WhatsApp</button>
+          <button type="button" class="btn btn-ghost" id="sendEmail">Send via Email</button>
+        </div>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <img src="assets/images/logo1.png" alt="Pormat Property Group" style="height:26px;width:auto;">
+      Pormat Property Group
+    </div>
+    <div class="footer-links">
+      <a href="#listings">Listings</a>
+      <a href="#about">About</a>
+      <a href="#contact">Enquire</a>
+    </div>
+  </div>
+  <div class="wrap footer-fine">
+    <span>© 2026 Pormat Property Group. Listing details shown are placeholders pending final content.</span>
+    <span class="footer-credit">Developed by <a href="https://kasi-code.netlify.app/" target="_blank" rel="noopener">Kasi Code</a></span>
+  </div>
+</footer>
+
+<!-- ================= MODAL ================= -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-media" id="modalMedia">
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-loc" id="modalLoc"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-actions">
+        <button class="btn btn-dark" id="modalEnquire">Enquire About This Property</button>
+        <a class="btn btn-ghost-dark" id="modalSource" href="#" target="_blank" rel="noopener" style="border:1px solid var(--charcoal);color:var(--charcoal);">View Full Listing on Pormat</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------- Property data (placeholders — replace with real content) ---------------- */
+const properties = [
+  {
+    id: "mooikloof-ridge",
+    name: "2-Bedroom Apartment — Mooikloof Ridge Estate",
+    location: "Mooikloof Ridge, Pretoria",
+    status: "available",
+    price: "R 9,950 pm",
+    beds: "2", size: "On request", type: "Residential — To Let",
+    desc: "A clean, well-presented corner unit in the sought-after Mooikloof Ridge Estate. Available from 1 April 2026.",
+    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2026/3/513_79a68e14ee344928b6589a2814ed38c2_t_w_320_h_240.avif",
+    sourceUrl: "https://www.pormat.co.za/results/residential/to-let/pretoria/mooikloof-ridge/apartment/3114182/"
+  },
+  {
+    id: "garsfontein-duplex",
+    name: "3 Bedroom Duplex — Garsfontein",
+    location: "Garsfontein, Pretoria East",
+    status: "available",
+    price: "R 1,500,000",
+    beds: "3", size: "On request", type: "Residential — For Sale",
+    desc: "A duplex for sale in a quiet, secure residential complex in Garsfontein, Pretoria East.",
+    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_1838ae9d6e7241d39f3cb89af3857ce4_t_w_320_h_240.avif",
+    sourceUrl: "https://www.pormat.co.za/results/residential/for-sale/pretoria/garsfontein/duplex/2335034/"
+  },
+  {
+    id: "savannah-country-estate",
+    name: "2 Bedroom Apartment — Savannah Country Estate",
+    location: "Savannah Country Estate, Pretoria East",
+    status: "available",
+    price: "R 8,800 pm",
+    beds: "2", size: "On request", type: "Residential — To Let",
+    desc: "A modern, immaculately kept apartment for rent at Green Creek Lifestyle Estate in Pretoria East.",
+    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_f2774fbfe4b447b3a6cc4b0c5e99f4a9_t_w_320_h_240.avif",
+    sourceUrl: "https://www.pormat.co.za/results/residential/to-let/pretoria/savannah-country-estate/apartment/2335098/"
+  },
+  {
+    id: "hazeldean-house",
+    name: "4 Bedroom House — Hazeldean",
+    location: "Hazeldean, Silverlakes Area, Pretoria",
+    status: "available",
+    price: "R 1,935,000",
+    beds: "4", size: "On request", type: "Residential — For Sale",
+    desc: "A modern double-storey home in the Hazeldean/Silverlakes area, with lounge, dining room, kitchen, and double garage.",
+    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_1cc9eefeaf9e48e6a0cf8710f6c15d72_t_w_320_h_240.avif",
+    sourceUrl: "https://www.pormat.co.za/results/residential/for-sale/pretoria/hazeldean/house/2335117/"
+  },
+  {
+    id: "six-fountains-duet",
+    name: "4 Bedroom Duet — Six Fountains Residential Estate",
+    location: "Six Fountains Estate, Pretoria East",
+    status: "available",
+    price: "R 3,995,000",
+    beds: "4", size: "On request", type: "Residential — For Sale",
+    desc: "A brand-new double-storey home in the Six Fountains Estate, Pretoria East. Bond registration and transfer costs are included in the sale price.",
+    image: "https://d21tw07c6rnmp0.cloudfront.net/media/uploads/513/residential/2025/2/513_b5ef1338b5dc4373a7f9ba20e13b1f0f_t_w_320_h_240.avif",
+    sourceUrl: "https://www.pormat.co.za/results/residential/for-sale/pretoria/six-fountains-residential-estate/duet/2335101/"
+  }
+];
+
+const statusMeta = {
+  available: { label: "Available", cls: "tag-available" },
+  reserved:  { label: "Reserved",  cls: "tag-reserved" },
+  soon:      { label: "Coming Soon", cls: "tag-soon" }
+};
+
+/* ---------------- Render listing cards ---------------- */
+const grid = document.getElementById('listingsGrid');
+const propertySelect = document.getElementById('f-property');
+
+properties.forEach(p=>{
+  const meta = statusMeta[p.status];
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-media">
+      <span class="card-tag ${meta.cls}">${meta.label}</span>
+      <img src="${p.image}" alt="${p.name} — placeholder image" loading="lazy">
+    </div>
+    <div class="card-body">
+      <div class="card-loc">${p.location}</div>
+      <div class="card-title">${p.name}</div>
+      <div class="card-specs">
+        <span>${p.type}</span>
+        ${p.beds !== "—" ? `<span>${p.beds} Bed</span>` : ''}
+        <span>${p.size}</span>
+      </div>
+      <div class="card-price"><small>Price</small>${p.price}</div>
+      <button class="card-btn" data-id="${p.id}">View Details</button>
+    </div>
+  `;
+  grid.appendChild(card);
+
+  const opt = document.createElement('option');
+  opt.value = p.id;
+  opt.textContent = p.name;
+  propertySelect.appendChild(opt);
+});
+
+const opt0 = document.createElement('option');
+opt0.value = "general";
+opt0.textContent = "General Enquiry";
+propertySelect.insertBefore(opt0, propertySelect.firstChild);
+propertySelect.value = "general";
+
+/* ---------------- Modal ---------------- */
+const overlay = document.getElementById('modalOverlay');
+const modalMedia = document.getElementById('modalMedia');
+const modalLoc = document.getElementById('modalLoc');
+const modalTitle = document.getElementById('modalTitle');
+const modalPrice = document.getElementById('modalPrice');
+const modalSpecs = document.getElementById('modalSpecs');
+const modalDesc = document.getElementById('modalDesc');
+const modalEnquire = document.getElementById('modalEnquire');
+let activeProperty = null;
+
+function openModal(id){
+  const p = properties.find(x=>x.id===id);
+  if(!p) return;
+  activeProperty = p;
+  modalMedia.innerHTML = `<button class="modal-close" id="modalClose">&times;</button><img src="${p.image}" alt="${p.name} — placeholder image">`;
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modalLoc.textContent = p.location;
+  modalTitle.textContent = p.name;
+  modalPrice.textContent = p.price;
+  modalDesc.textContent = p.desc;
+  modalSpecs.innerHTML = `
+    <div class="spec-item"><div class="spec-label">Type</div><div class="spec-value">${p.type}</div></div>
+    <div class="spec-item"><div class="spec-label">Size</div><div class="spec-value">${p.size}</div></div>
+    <div class="spec-item"><div class="spec-label">Bedrooms</div><div class="spec-value">${p.beds}</div></div>
+    <div class="spec-item"><div class="spec-label">Status</div><div class="spec-value">${statusMeta[p.status].label}</div></div>
+  `;
+  const sourceBtn = document.getElementById('modalSource');
+  if(p.sourceUrl){
+    sourceBtn.href = p.sourceUrl;
+    sourceBtn.style.display = 'inline-block';
+  } else {
+    sourceBtn.style.display = 'none';
+  }
+  overlay.classList.add('open');
+}
+function closeModal(){
+  overlay.classList.remove('open');
+  activeProperty = null;
+}
+grid.addEventListener('click', e=>{
+  const btn = e.target.closest('.card-btn');
+  if(btn) openModal(btn.dataset.id);
+});
+overlay.addEventListener('click', e=>{ if(e.target === overlay) closeModal(); });
+modalEnquire.addEventListener('click', ()=>{
+  if(activeProperty) propertySelect.value = activeProperty.id;
+  closeModal();
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+});
+
+/* ---------------- Enquiry form ---------------- */
+const WHATSAPP_NUMBER = "27660901485"; // 066 090 1485 in international format
+const ENQUIRY_EMAIL = "Dolly@pormat.co.za";
+
+function buildMessage(){
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const propId = propertySelect.value;
+  const propName = propId === "general" ? "General Enquiry" : properties.find(p=>p.id===propId)?.name || "General Enquiry";
+  const message = document.getElementById('f-message').value.trim();
+
+  if(!name || !phone){
+    return null;
+  }
+
+  let text = `New enquiry from the Pormat Property Hub\n\n`;
+  text += `Name: ${name}\n`;
+  text += `Phone: ${phone}\n`;
+  if(email) text += `Email: ${email}\n`;
+  text += `Property: ${propName}\n`;
+  if(message) text += `Message: ${message}\n`;
+  return text;
+}
+
+const status = document.getElementById('formStatus');
+
+document.getElementById('sendWhatsapp').addEventListener('click', ()=>{
+  const text = buildMessage();
+  if(!text){ status.textContent = "Please add your name and phone number first."; return; }
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+  status.textContent = "Opening WhatsApp with your enquiry ready to send…";
+});
+
+document.getElementById('sendEmail').addEventListener('click', ()=>{
+  const text = buildMessage();
+  if(!text){ status.textContent = "Please add your name and phone number first."; return; }
+  const subject = "New Enquiry — Pormat Property Hub";
+  window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+  status.textContent = "Opening your email app with the enquiry drafted…";
+});
+</script>
+</body>
+</html>
