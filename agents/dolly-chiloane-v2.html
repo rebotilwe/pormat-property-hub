@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="assets/images/logo1.png">
+<title>Dolly Chiloane — Pormat Property Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:        #8C2F26;
+    --red-deep:   #6E241D;
+    --charcoal:   #4A3D35;
+    --black:      #16130F;
+    --paper:      #FAF7F2;
+    --grey:       #7A7168;
+    --line:       #E4DCCF;
+    --white:      #FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:#3A2E27;
+    color:var(--black);
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    padding:32px 16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .card{
+    width:100%;max-width:380px;
+    background:var(--paper);
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+  }
+
+  /* dot grid accent, top-left, echoing the flyer */
+  .dotgrid{
+    position:absolute;top:20px;left:20px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
+    z-index:1;opacity:0.5;
+  }
+  .dotgrid span{width:3px;height:3px;border-radius:50%;background:var(--charcoal);}
+
+  .card-top{
+    position:relative;
+    padding:56px 26px 0;
+    text-align:center;
+    z-index:2;
+  }
+
+  .avatar-wrap{
+    position:relative;
+    width:150px;height:150px;
+    margin:0 auto 22px;
+  }
+  .avatar-ring-outer{
+    position:absolute;inset:0;border-radius:50%;
+    border:3px solid var(--white);
+    box-shadow:0 0 0 2px var(--red);
+  }
+  .avatar-ring-accent{
+    position:absolute;
+    width:44px;height:44px;
+    bottom:-4px;right:-4px;
+    border-radius:50%;
+    background:var(--black);
+    border:3px solid var(--paper);
+  }
+  .avatar{
+    position:absolute;inset:8px;
+    border-radius:50%;
+    overflow:hidden;
+    background:var(--white);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;}
+
+  .name-script{
+    font-family:'Dancing Script',cursive;
+    font-size:2.5rem;font-weight:700;
+    color:var(--red);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .name-underline{
+    width:70px;height:2px;background:var(--red);
+    margin:0 auto 14px;
+  }
+
+  .title-line{
+    font-size:0.78rem;font-weight:600;
+    letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--charcoal);
+    margin-bottom:24px;
+  }
+  .title-line b{color:var(--red);}
+
+  .card-body{padding:0 26px 8px;}
+
+  .actions{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+    margin-bottom:16px;
+  }
+  .action-btn{
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    background:var(--white);border:1px solid var(--line);
+    border-radius:12px;padding:14px 6px;
+    font-size:0.72rem;font-weight:600;color:var(--charcoal);
+    text-decoration:none;
+    transition:all .15s;
+  }
+  .action-btn:hover{border-color:var(--red);background:#F5EDE4;}
+  .action-btn svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:2;}
+
+  .save-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;background:var(--red);color:var(--white);
+    border:none;border-radius:12px;padding:15px;
+    font-family:inherit;font-size:0.92rem;font-weight:700;
+    cursor:pointer;transition:background .15s;
+    margin-bottom:12px;
+  }
+  .save-btn:hover{background:var(--red-deep);}
+  .save-btn svg{width:18px;height:18px;stroke:var(--white);fill:none;stroke-width:2;}
+
+  .share-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;background:transparent;color:var(--charcoal);
+    border:1px solid var(--line);border-radius:12px;padding:14px;
+    font-family:inherit;font-size:0.88rem;font-weight:600;
+    cursor:pointer;transition:all .15s;
+  }
+  .share-btn:hover{border-color:var(--charcoal);}
+  .share-btn svg{width:16px;height:16px;stroke:var(--charcoal);fill:none;stroke-width:2;}
+
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--black);color:var(--paper);
+    padding:12px 20px;border-radius:10px;font-size:0.85rem;font-weight:600;
+    opacity:0;pointer-events:none;transition:all .25s;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  .card-footer{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:20px 26px 26px;
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+  .card-footer img{height:30px;width:auto;}
+  .tagline{
+    font-size:0.66rem;font-style:italic;color:var(--grey);
+    line-height:1.4;text-align:right;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="dotgrid">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="card-top">
+    <div class="avatar-wrap">
+      <div class="avatar-ring-outer"></div>
+      <div class="avatar-ring-accent"></div>
+      <div class="avatar"><img src="assets/images/dolly-chiloane.jpg" alt="Dolly Chiloane"></div>
+    </div>
+
+    <div class="name-script" id="agentName">Dolly Chiloane</div>
+    <div class="name-underline"></div>
+    <div class="title-line">HEAD OF <b>PORMAT SALES</b></div>
+  </div>
+
+  <div class="card-body">
+    <div class="actions">
+      <a class="action-btn" href="tel:+27660901485">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call
+      </a>
+      <a class="action-btn" href="https://wa.me/27660901485" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
+      <a class="action-btn" href="mailto:Dolly@pormat.co.za">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Email
+      </a>
+    </div>
+
+    <button class="save-btn" id="saveContactBtn">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      Save Contact
+    </button>
+    <button class="share-btn" id="shareBtn">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      Share My Card
+    </button>
+  </div>
+
+  <div class="card-footer">
+    <img src="assets/images/logo1.png" alt="Pormat Property Group">
+    <div class="tagline">Building places.<br>Creating value.<br>Empowering lives.</div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Link copied to clipboard</div>
+
+<script>
+const agent = {
+  name: "Dolly Chiloane",
+  title: "Head of Pormat Sales",
+  company: "Pormat Property Group",
+  phone: "+27660901485",
+  email: "Dolly@pormat.co.za",
+  website: "https://www.pormat.co.za"
+};
+
+document.getElementById('saveContactBtn').addEventListener('click', () => {
+  const vcard = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    `N:${agent.name.split(" ").reverse().join(";")};;;`,
+    `FN:${agent.name}`,
+    `ORG:${agent.company}`,
+    `TITLE:${agent.title}`,
+    `TEL;TYPE=CELL:${agent.phone}`,
+    `EMAIL:${agent.email}`,
+    `URL:${agent.website}`,
+    "END:VCARD"
+  ].join("\n");
+  const blob = new Blob([vcard], { type: "text/vcard" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${agent.name.replace(/\s+/g, "-")}.vcf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const shareData = {
+    title: `${agent.name} — ${agent.company}`,
+    text: `${agent.name}, ${agent.title} at ${agent.company}`,
+    url: window.location.href
+  };
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch(e) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    } catch(e) {}
+  }
+});
+</script>
+</body>
+</html>
