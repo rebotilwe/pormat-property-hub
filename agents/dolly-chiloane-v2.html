@@ -39,10 +39,18 @@
     position:relative;
     box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
   }
-  .top-strip{
-    height:10px;
-    background:linear-gradient(90deg, var(--red-deep), var(--red));
+  .ribbon-corner{
+    position:absolute;top:0;right:0;width:170px;height:170px;
+    overflow:hidden;pointer-events:none;z-index:1;
   }
+  .ribbon-corner .band{
+    position:absolute;height:38px;width:280px;
+    transform:rotate(35deg);
+    transform-origin:top left;
+  }
+  .ribbon-corner .band.b1{background:var(--black);top:-6px;right:-70px;}
+  .ribbon-corner .band.b2{background:linear-gradient(90deg, var(--red-deep), var(--red));top:34px;right:-70px;}
+  .ribbon-corner .band.b3{background:var(--white);top:74px;right:-70px;}
 
   /* dot grid accent, top-left, echoing the flyer */
   .dotgrid{
@@ -111,19 +119,19 @@
   .card-body{padding:0 26px 8px;}
 
   .actions{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
     margin-bottom:16px;
   }
   .action-btn{
-    display:flex;flex-direction:column;align-items:center;gap:6px;
+    display:flex;flex-direction:column;align-items:center;gap:5px;
     background:var(--white);border:1px solid var(--line);
-    border-radius:12px;padding:14px 6px;
-    font-size:0.72rem;font-weight:600;color:var(--charcoal);
+    border-radius:12px;padding:12px 4px;
+    font-size:0.66rem;font-weight:600;color:var(--charcoal);
     text-decoration:none;
     transition:all .15s;
   }
   .action-btn:hover{border-color:var(--red);background:#F5EDE4;}
-  .action-btn svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:2;}
+  .action-btn svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:2;}
 
   .save-btn{
     display:flex;align-items:center;justify-content:center;gap:8px;
@@ -154,12 +162,22 @@
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
+  .swoosh{
+    position:relative;height:26px;overflow:hidden;
+    background:var(--paper);
+  }
+  .swoosh svg{position:absolute;bottom:0;left:0;width:100%;height:100%;display:block;}
+
   .card-footer{
     display:flex;align-items:center;justify-content:space-between;gap:12px;
     padding:20px 26px 26px;
     background:var(--stone);
-    margin-top:20px;
+    margin-top:0;
+    text-decoration:none;
+    color:inherit;
+    transition:background .15s;
   }
+  .card-footer:hover{background:#CFCAC2;}
   .card-footer img{height:30px;width:auto;}
   .tagline{
     font-size:0.66rem;font-style:italic;color:var(--charcoal);
@@ -171,7 +189,11 @@
 <body>
 
 <div class="card">
-  <div class="top-strip"></div>
+  <div class="ribbon-corner">
+    <div class="band b1"></div>
+    <div class="band b2"></div>
+    <div class="band b3"></div>
+  </div>
   <div class="dotgrid">
     <span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
@@ -187,7 +209,7 @@
 
     <div class="name-script" id="agentName">Dolly Chiloane</div>
     <div class="name-underline"></div>
-    <div class="title-line">HEAD OF <b>PORMAT SALES</b></div>
+    <div class="title-line">PROPERTY <b>PRACTITIONER</b></div>
   </div>
 
   <div class="card-body">
@@ -204,6 +226,10 @@
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
         Email
       </a>
+      <a class="action-btn" href="https://www.pormat.co.za/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+        Website
+      </a>
     </div>
 
     <button class="save-btn" id="saveContactBtn">
@@ -216,10 +242,17 @@
     </button>
   </div>
 
-  <div class="card-footer">
-    <img src="assets/images/logo1.png" alt="Pormat Property Group">
-    <div class="tagline">Building places.<br>Creating value.<br>Empowering lives.</div>
+  <div class="swoosh">
+    <svg viewBox="0 0 380 26" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,26 380,0 380,26" fill="#16130F"/>
+      <polygon points="0,26 380,9 380,26" fill="#8C2F26"/>
+    </svg>
   </div>
+
+  <a class="card-footer" href="https://www.pormat.co.za/" target="_blank" rel="noopener">
+    <img src="assets/images/logo1.png" alt="Pormat Property Group">
+    <div class="tagline">Making Your Real Estate<br>Dreams Real</div>
+  </a>
 </div>
 
 <div class="toast" id="toast">Link copied to clipboard</div>
