@@ -15,13 +15,15 @@
     --black:      #16130F;
     --paper:      #FAF7F2;
     --grey:       #7A7168;
+    --stone:      #DCD8D1;
+    --stone-dark: #8C877E;
     --line:       #E4DCCF;
     --white:      #FFFFFF;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
     font-family:'Inter',sans-serif;
-    background:#3A2E27;
+    background:#5C1B14;
     color:var(--black);
     min-height:100vh;
     display:flex;align-items:center;justify-content:center;
@@ -36,6 +38,10 @@
     overflow:hidden;
     position:relative;
     box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+  }
+  .top-strip{
+    height:10px;
+    background:linear-gradient(90deg, var(--red-deep), var(--red));
   }
 
   /* dot grid accent, top-left, echoing the flyer */
@@ -68,7 +74,7 @@
     width:44px;height:44px;
     bottom:-4px;right:-4px;
     border-radius:50%;
-    background:var(--black);
+    background:var(--stone-dark);
     border:3px solid var(--paper);
   }
   .avatar{
@@ -92,12 +98,15 @@
   }
 
   .title-line{
-    font-size:0.78rem;font-weight:600;
-    letter-spacing:0.12em;text-transform:uppercase;
+    display:inline-flex;align-items:center;
+    background:var(--stone);
     color:var(--charcoal);
+    padding:7px 16px;border-radius:999px;
+    font-size:0.74rem;font-weight:700;
+    letter-spacing:0.1em;text-transform:uppercase;
     margin-bottom:24px;
   }
-  .title-line b{color:var(--red);}
+  .title-line b{color:var(--red);margin-left:4px;}
 
   .card-body{padding:0 26px 8px;}
 
@@ -148,19 +157,21 @@
   .card-footer{
     display:flex;align-items:center;justify-content:space-between;gap:12px;
     padding:20px 26px 26px;
-    border-top:1px solid var(--line);
+    background:var(--stone);
     margin-top:20px;
   }
   .card-footer img{height:30px;width:auto;}
   .tagline{
-    font-size:0.66rem;font-style:italic;color:var(--grey);
+    font-size:0.66rem;font-style:italic;color:var(--charcoal);
     line-height:1.4;text-align:right;
+    font-weight:600;
   }
 </style>
 </head>
 <body>
 
 <div class="card">
+  <div class="top-strip"></div>
   <div class="dotgrid">
     <span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span>
